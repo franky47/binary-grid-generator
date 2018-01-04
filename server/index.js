@@ -50,8 +50,11 @@ const getMatrixDensity = (matrix) => {
 * @param context {WebtaskContext}
 *
 * Query string arguments:
-* @query num_matrices {Integer} - The number of matrices to generate.
-* @query side {Integer} - The size of the square (side x side).
+* @arg size {Integer} - The number of matrices to generate.
+* @arg side {Integer} - The size of the square (side x side).
+* @arg min_density_probability {Float} - Minimum matrix density
+* @arg max_density_probability {Float} - Maximum matrix density
+* @arg distribution {uniform | normal} - Density probability distribution
 */
 module.exports = function (context, cb) {
   const size = parseInt(context.query.size) || 100
@@ -77,8 +80,8 @@ module.exports = function (context, cb) {
   return Promise.all(densities.map((d) => generateMatrix(side, d)))
     .then((matrices) => {
       cb(null, {
-        matrices: matrices.map(m => stringifyMatrix(m)),
-        densities: matrices.map(m => getMatrixDensity(m))
+        matrices: matrices.map(stringifyMatrix),
+        densities: matrices.map(getMatrixDensity)
       })
     })
 }

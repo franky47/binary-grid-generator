@@ -1,0 +1,12 @@
+{
+  "name": "bgg-server",
+  "version": "0.0.0",
+  "description": "Back-end code for Binary Grid Generator app",
+  "main": "index.js",
+  "author": "Francois Best <francoisbest@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "wt-cli": "^8.3.0"
+  }
+}

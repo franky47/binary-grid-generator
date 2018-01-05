@@ -21,7 +21,7 @@ export default class Controls extends React.PureComponent {
     return (
       <form onSubmit={this.submit}>
         <label>
-          Side
+          Square size
           <input
             type='number'
             min={3}

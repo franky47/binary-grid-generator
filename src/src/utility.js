@@ -2,6 +2,10 @@ import JSZip from 'jszip'
 import $ from 'jquery'
 import uniqueId from 'lodash/uniqueId'
 
+export const stringifyMatrix = (matrix) => {
+  return matrix.map((row) => row.join('')).join('|')
+}
+
 export const decodeMatrix = (str) => {
   return str.split('|').map((row) => row.split('').map((v) => parseInt(v, 2)))
 }

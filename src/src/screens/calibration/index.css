@@ -28,3 +28,6 @@ button.secondary {
 .failure {
   color: crimson;
 }
+span.secondary {
+  color: #888;
+}

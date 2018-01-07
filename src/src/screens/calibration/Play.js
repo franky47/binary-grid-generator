@@ -52,11 +52,11 @@ export default class Play extends React.PureComponent {
     const { matrix, submit } = this.props
     const stats = {
       matrix: stringifyMatrix(matrix),
+      side: matrix.length,
       count: getCount(matrix),
       guess: this.state.guess,
       time: (chronoStop - this.state.chronoStart) * 0.001
     }
-
     stats.correct = stats.guess === stats.count
     submit(stats)
   }

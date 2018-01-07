@@ -34,7 +34,7 @@ export default class Matrix extends React.PureComponent {
         {
           cells.map((value, index) =>
             <div style={styles.cell} key={index}>
-              <img src={value ? one : zero} />
+              <img src={value ? one : zero} alt={value ? 'one' : 'zero'} />
             </div>
           )
         }

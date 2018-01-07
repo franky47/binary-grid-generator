@@ -1,1 +1,5 @@
-null
+@media (max-width: 500px) {
+  section.intro span.secondary.separator {
+    display: none;
+  }
+}

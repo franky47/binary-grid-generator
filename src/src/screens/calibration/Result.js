@@ -26,14 +26,14 @@ export default class Result extends React.PureComponent {
   }
 
   componentDidMount () {
-    const correct = this.props.guess === this.props.count && this.props.guess
+    const correct = this.props.guess === this.props.count
     const a = correct ? greets.correct : greets.incorrect
     const greet = a[Math.round(Math.random() * (a.length - 1))]
     this.setState({ greet })
   }
   render () {
     const { guess, count, time, next, done, showNext } = this.props
-    const correct = guess === count && guess && count
+    const correct = guess === count
     return (
       <section>
         <h3>{ this.state.greet }</h3>

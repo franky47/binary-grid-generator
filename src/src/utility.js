@@ -1,6 +1,17 @@
 import JSZip from 'jszip'
 import $ from 'jquery'
 import uniqueId from 'lodash/uniqueId'
+import nanoid from 'nanoid'
+
+export const setUserId = () => {
+  if (!localStorage.getItem('bgg-uid')) {
+    localStorage.setItem('bgg-uid', nanoid())
+  }
+}
+
+export const getUserId = () => {
+  return localStorage.getItem('bgg-uid')
+}
 
 export const stringifyMatrix = (matrix) => {
   return matrix.map((row) => row.join('')).join('|')

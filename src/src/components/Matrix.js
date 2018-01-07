@@ -1,4 +1,6 @@
 import React from 'react'
+import one from './one.svg'
+import zero from './zero.svg'
 
 const matrixSize = 30
 
@@ -28,10 +30,12 @@ export default class Matrix extends React.PureComponent {
     const side = this.props.data.length
     const cells = this.props.data.reduce((acc, row) => acc.concat(row))
     return (
-      <div style={styles.container(side)}>
+      <div style={styles.container(side)} className='matrix'>
         {
           cells.map((value, index) =>
-            <div style={styles.cell} key={index}>{value}</div>
+            <div style={styles.cell} key={index}>
+              <img src={value ? one : zero} />
+            </div>
           )
         }
       </div>

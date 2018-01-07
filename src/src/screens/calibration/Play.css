@@ -5,7 +5,7 @@ section.play {
   align-items: center;
 }
 
-.matrix {
+section.play .matrix {
   margin: 5rem;
 }
 

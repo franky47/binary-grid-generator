@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Matrix from '../../components/MatrixSvg'
+import Matrix from '../../components/Matrix'
 import { getCount, stringifyMatrix } from '../../utility'
 
 import './Play.css'

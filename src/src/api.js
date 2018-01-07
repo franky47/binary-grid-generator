@@ -8,7 +8,7 @@ const defaultParams = {
 
 const get = (params = defaultParams) => {
   const url = 'https://wt-92cccbcf027a1b4070443ff04b9033cc-0.run.webtask.io/binary-grid-generator'
-  return axios.get(url, params)
+  return axios.get(url, { params })
     .then((response) => response.data.matrices.map(decodeMatrix))
 }
 

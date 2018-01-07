@@ -77,7 +77,7 @@ export default class Calibration extends React.PureComponent {
 
   componentDidMount () {
     this.setState({ loading: true })
-    api.get().then((matrices) => {
+    api.aggregate().then((matrices) => {
       this.setState({
         initialNumMatrices: matrices.length,
         matrices,

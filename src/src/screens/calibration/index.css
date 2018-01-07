@@ -1,0 +1,30 @@
+.calibration {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+button {
+  background-color: #2196f3;
+  color: white;
+  border: 0px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  height: 4.5rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  margin: 0 1rem;
+}
+
+button.secondary {
+  background-color: white;
+  color: #555;
+  border: 1px #aaa solid;
+}
+
+.success {
+  color: green;
+}
+.failure {
+  color: crimson;
+}

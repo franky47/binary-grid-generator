@@ -9,7 +9,7 @@ const greets = {
     'Well done !'
   ],
   incorrect: [
-    'Nope.',
+    'Nope',
     'Sorry :(',
     'That\'s wrong !',
     'Where did you learn how to count ?',
@@ -38,19 +38,19 @@ export default class Result extends React.PureComponent {
       <section>
         <h3>{ this.state.greet }</h3>
         { correct &&
-          <p>You guessed {guess} in {time} seconds.</p>
+          <p>You guessed <b className='success'>{guess}</b> in <b>{time.toFixed(3)}s</b>.</p>
         }
         { !correct &&
           <div>
-            <p>Your guess: {guess}</p>
-            <p>Correct answer: {count}</p>
-            <p>Your time: {time}</p>
+            <p>Your guess: <b className='failure'>{guess}</b></p>
+            <p>Correct answer: <b className='success'>{count}</b></p>
+            <p>Your time: <b>{time.toFixed(3)}s</b></p>
           </div>
         }
         { showNext &&
           <button onClick={next}>Next</button>
         }
-        <button onClick={done}>Done</button>
+        <button onClick={done} className='secondary'>Finish</button>
       </section>
     )
   }

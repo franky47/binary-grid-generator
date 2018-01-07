@@ -7,6 +7,8 @@ import Play from './Play'
 import Result from './Result'
 import Summary from './Summary'
 
+import './index.css'
+
 export default class Calibration extends React.PureComponent {
   constructor (props) {
     super(props)
@@ -27,7 +29,7 @@ export default class Calibration extends React.PureComponent {
 
   render () {
     return (
-      <div>
+      <div className='calibration'>
         { this.renderScreen() }
       </div>
     )

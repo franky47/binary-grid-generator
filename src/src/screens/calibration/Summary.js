@@ -15,7 +15,7 @@ export default class Summary extends React.PureComponent {
         <p>Completion rate: <b>{completionRate}%</b> ({numCompleted} / {numTotal})</p>
         <p>Success rate: <b>{successRate}%</b> ({numCorrect} / {numCompleted})</p>
         { /* todo: add field to leave a comment */ }
-        <button>Play again</button>
+        {/* <button>Play again</button> */}
       </section>
     )
   }

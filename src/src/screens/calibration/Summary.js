@@ -9,9 +9,9 @@ export default class Summary extends React.PureComponent {
     return (
       <section>
         <h3>Statistics</h3>
-        <p>Best time: <b>{bestTime.toFixed(3)}s</b></p>
-        <p>Worst time: <b>{worstTime.toFixed(3)}s</b></p>
-        <p>Average time: <b>{averageTime.toFixed(3)}s</b></p>
+        <p>Best time: <b>{bestTime.toFixed(2)}s</b></p>
+        <p>Worst time: <b>{worstTime.toFixed(2)}s</b></p>
+        <p>Average time: <b>{averageTime.toFixed(2)}s</b></p>
         <p>Completion rate: <b>{completionRate}%</b> <span className='secondary'>({numCompleted} / {numTotal})</span></p>
         <p>Success rate: <b>{successRate}%</b> <span className='secondary'>({numCorrect} / {numCompleted})</span></p>
         { /* todo: add field to leave a comment */ }

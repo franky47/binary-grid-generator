@@ -38,13 +38,13 @@ export default class Result extends React.PureComponent {
       <section>
         <h3>{ this.state.greet }</h3>
         { correct &&
-          <p>You guessed <b className='success'>{guess}</b> in <b>{time.toFixed(3)}s</b>.</p>
+          <p>You guessed <b className='success'>{guess}</b> in <b>{time.toFixed(2)}s</b>.</p>
         }
         { !correct &&
           <div>
             <p>Your guess: <b className='failure'>{guess}</b></p>
             <p>Correct answer: <b className='success'>{count}</b></p>
-            <p>Your time: <b>{time.toFixed(3)}s</b></p>
+            <p>Your time: <b>{time.toFixed(2)}s</b></p>
           </div>
         }
         { showNext &&

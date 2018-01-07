@@ -31,6 +31,7 @@ export default class Play extends React.PureComponent {
         <form onSubmit={this.onSubmit}>
           <input
             type='number'
+            required
             autoFocus
             onChange={this.onChange}
           />

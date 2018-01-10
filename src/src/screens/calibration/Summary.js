@@ -8,12 +8,12 @@ export default class Summary extends React.PureComponent {
     const successRate = ((numCorrect / numCompleted) * 100).toFixed()
     return (
       <section>
-        <h3>Statistics</h3>
-        <p>Best time: <b>{bestTime.toFixed(2)}s</b></p>
-        <p>Worst time: <b>{worstTime.toFixed(2)}s</b></p>
-        <p>Average time: <b>{averageTime.toFixed(2)}s</b></p>
-        <p>Completion rate: <b>{completionRate}%</b> <span className='secondary'>({numCompleted} / {numTotal})</span></p>
-        <p>Success rate: <b>{successRate}%</b> <span className='secondary'>({numCorrect} / {numCompleted})</span></p>
+        <h3>Statistiques</h3>
+        <p>Meilleur temps : <b>{bestTime.toFixed(2)}s</b></p>
+        <p>Pire temps : <b>{worstTime.toFixed(2)}s</b></p>
+        <p>Temps moyen : <b>{averageTime.toFixed(2)}s</b></p>
+        <p>Pourcentage terminé : <b>{completionRate}%</b> <span className='secondary'>({numCompleted} / {numTotal})</span></p>
+        <p>Pourcentage réussi : <b>{successRate}%</b> <span className='secondary'>({numCorrect} / {numCompleted})</span></p>
         { /* todo: add field to leave a comment */ }
         {/* <button>Play again</button> */}
       </section>

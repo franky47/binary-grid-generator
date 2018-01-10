@@ -3,17 +3,10 @@ import PropTypes from 'prop-types'
 
 const greets = {
   correct: [
-    'That\'s right !',
-    'Correct !',
-    'Good !',
-    'Well done !'
+    'C\'est juste'
   ],
   incorrect: [
-    'Nope',
-    'Sorry :(',
-    'That\'s wrong !',
-    'Where did you learn how to count ?',
-    'Better take your time before answering rubbish...'
+    'C\'est faux'
   ]
 }
 
@@ -38,19 +31,22 @@ export default class Result extends React.PureComponent {
       <section>
         <h3>{ this.state.greet }</h3>
         { correct &&
-          <p>You guessed <b className='success'>{guess}</b> in <b>{time.toFixed(2)}s</b>.</p>
+          <div>
+            <p>Vous avez mis : <b className='success'>{guess}</b></p>
+            <p>Temps : <b>{time.toFixed(2)}s</b>.</p>
+          </div>
         }
         { !correct &&
           <div>
-            <p>Your guess: <b className='failure'>{guess}</b></p>
-            <p>Correct answer: <b className='success'>{count}</b></p>
-            <p>Your time: <b>{time.toFixed(2)}s</b></p>
+            <p>Vous avez mis : <b className='failure'>{guess}</b></p>
+            <p>Réponse juste : <b className='success'>{count}</b></p>
+            <p>Temps : <b>{time.toFixed(2)}s</b></p>
           </div>
         }
         { showNext &&
-          <button onClick={next}>Next</button>
+          <button onClick={next}>Suivant</button>
         }
-        <button onClick={done} className='secondary'>Finish</button>
+        <button onClick={done} className='secondary'>Finir</button>
       </section>
     )
   }

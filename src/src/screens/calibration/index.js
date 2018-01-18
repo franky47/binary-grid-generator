@@ -58,12 +58,13 @@ export default class Calibration extends React.PureComponent {
         />
       case 'summary':
         const {
-          bestTime, worstTime, averageTime, numCompleted, numTotal, numCorrect
+          bestTime, worstTime, averageTime, totalTime, numCompleted, numTotal, numCorrect
         } = computeStats(this.state.results)
         return <Summary
           bestTime={bestTime}
           worstTime={worstTime}
           averageTime={averageTime}
+          totalTime={totalTime}
           numCompleted={numCompleted}
           numTotal={numTotal}
           numCorrect={numCorrect}

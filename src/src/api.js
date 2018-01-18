@@ -31,6 +31,10 @@ const pushResult = (result) => {
 }
 
 const aggregate = () => {
+ return get({ side: 8, size: 20, mindp: 0, maxdp: 1 })
+}
+
+/**const aggregate = () => {
   return Promise.all([
     get({ side: 6, size: 20, mindp: 0, maxdp: 1 }),
     get({ side: 7, size: 20, mindp: 0, maxdp: 1 }),
@@ -38,6 +42,6 @@ const aggregate = () => {
   ])
   .then(([s6, s7, s8]) => [...s6, ...s7, ...s8]) // Combine
   .then((array) => shuffle(array))
-}
+}**/
 
 export default { get, aggregate, pushResult }

@@ -11,7 +11,7 @@ export default class Matrix extends React.PureComponent {
   render () {
     const count = getCount(this.props.data)
     const border = 2
-    const line = 1
+    const line = 0
     const side = this.props.data.length
     const width = side * cellSizePx + 2 * border + (side - 1) * line
     return (

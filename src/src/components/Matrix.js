@@ -13,7 +13,7 @@ const styles = {
     gridTemplateColumns: `repeat(${side}, ${matrixSize}px)`,
     border: 'solid 2px black',
     backgroundColor: 'black',
-    gridGap: '1px 1px'
+    gridGap: '0px 0px'
   }),
   cell: {
     fontFamily: 'Arial',

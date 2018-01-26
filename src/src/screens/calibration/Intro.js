@@ -1,4 +1,6 @@
 import React from 'react'
+import { generateRunId } from '../../utility'
+
 import './Intro.css'
 
 export default class Intro extends React.PureComponent {
@@ -12,9 +14,14 @@ export default class Intro extends React.PureComponent {
           <p>Chargement</p>
         }
         { !loading &&
-          <button onClick={this.props.next}>Commencer</button>
+          <button onClick={this.start}>Commencer</button>
         }
       </section>
     )
+  }
+
+  start = () => {
+    this.props.updateRunId(generateRunId())
+    this.props.next()
   }
 }

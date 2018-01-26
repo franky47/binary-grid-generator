@@ -14,6 +14,8 @@ export const getUserId = () => {
   return localStorage.getItem('bgg-uid')
 }
 
+export const generateRunId = () => shortid.generate()
+
 export const stringifyMatrix = (matrix) => {
   return matrix.map((row) => row.join('')).join('|')
 }

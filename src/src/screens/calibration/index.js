@@ -19,7 +19,8 @@ export default class Calibration extends React.PureComponent {
       matrices: [],
       results: [],
       loading: false,
-      currentMatrix: undefined
+      currentMatrix: undefined,
+      rid: null
     }
 
     this.nextGame = this.nextGame.bind(this)
@@ -34,17 +35,20 @@ export default class Calibration extends React.PureComponent {
       </div>
     )
   }
+
   renderScreen () {
     switch (this.state.stage) {
       case 'intro':
         return <Intro
           next={this.nextGame}
+          updateRunId={this.updateRunId}
           loading={this.state.loading}
         />
       case 'play':
         return <Play
           matrix={this.state.currentMatrix}
           submit={this.submitGuess}
+          rid={this.state.rid}
         />
       case 'result':
         const { guess, count, time } = this.state.results[this.state.results.length - 1]
@@ -85,6 +89,10 @@ export default class Calibration extends React.PureComponent {
         loading: false
       })
     })
+  }
+
+  updateRunId = (rid) => {
+    this.setState({ rid })
   }
 
   nextGame () {

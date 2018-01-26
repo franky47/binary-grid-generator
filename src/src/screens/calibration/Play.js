@@ -51,6 +51,7 @@ export default class Play extends React.PureComponent {
     event.preventDefault()
     const { matrix, submit } = this.props
     const stats = {
+      rid: this.props.rid,
       matrix: stringifyMatrix(matrix),
       side: matrix.length,
       count: getCount(matrix),
@@ -64,5 +65,6 @@ export default class Play extends React.PureComponent {
 
 Play.propTypes = {
   submit: PropTypes.func,
-  matrix: PropTypes.array
+  matrix: PropTypes.array,
+  rid: PropTypes.string
 }

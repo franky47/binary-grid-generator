@@ -1,11 +1,12 @@
 import JSZip from 'jszip'
 import $ from 'jquery'
 import uniqueId from 'lodash/uniqueId'
-import nanoid from 'nanoid'
+import shortid from 'shortid'
 
 export const setUserId = () => {
-  if (!localStorage.getItem('bgg-uid')) {
-    localStorage.setItem('bgg-uid', nanoid())
+  const uid = getUserId()
+  if (!uid || uid.length >= 15) {
+    localStorage.setItem('bgg-uid', shortid.generate())
   }
 }
 

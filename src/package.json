@@ -18,7 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "surge -d https://binary-grid-generator.surge.sh -p ./build"
+    "deploy": "surge -d https://binary-grid-generator.surge.sh -p ./build",
+    "release": "yarn build && yarn deploy"
   },
   "devDependencies": {
     "surge": "^0.19.0"

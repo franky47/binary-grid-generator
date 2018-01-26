@@ -105,13 +105,9 @@ export default class Calibration extends React.PureComponent {
     })
   }
   submitGuess (result) {
-    const correct = result.count === result.guess
     const r = Object.assign({}, result, {
-      correct,
-      completion: {
-        number: this.state.initialNumMatrices - this.state.matrices.length,
-        of: this.state.initialNumMatrices
-      }
+      completionIndex: this.state.initialNumMatrices - this.state.matrices.length,
+      completionTotal: this.state.initialNumMatrices
     })
     api.pushResult(r)
     this.setState({

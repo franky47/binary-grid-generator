@@ -3,7 +3,9 @@ import { decodeMatrix, getUserId } from './utility'
 
 const defaultParams = {
   side: 7,
-  size: 20
+  size: 20,
+  mindp: 0.4,
+  maxdp: 0.7
 }
 
 /**

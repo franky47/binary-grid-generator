@@ -33,7 +33,7 @@ const pushResult = (result) => {
 }
 
 const aggregate = () => {
-  return get({ side: 9, size: 80, mindp: 0.3, maxdp: 0.7 })
+  return get({ side: 9, size: 80, mindp: 0.4, maxdp: 0.7 })
 }
 
 // const aggregate = () => {

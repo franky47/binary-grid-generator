@@ -6,12 +6,12 @@ import shortid from 'shortid'
 export const setUserId = () => {
   const uid = getUserId()
   if (!uid || uid.length >= 15) {
-    localStorage.setItem('bgg-uid', shortid.generate())
+    window.localStorage.setItem('bgg-uid', shortid.generate())
   }
 }
 
 export const getUserId = () => {
-  return localStorage.getItem('bgg-uid')
+  return window.localStorage.getItem('bgg-uid')
 }
 
 export const generateRunId = () => shortid.generate()
@@ -37,7 +37,7 @@ export const getMatrixDensity = (matrix) => {
 
 const renderFromSvg = (svg) => {
   return new Promise((resolve, reject) => {
-    const serializer = new XMLSerializer()
+    const serializer = new window.XMLSerializer()
     const svgstr = serializer.serializeToString(svg)
     const canvas = document.createElement('canvas')
     canvas.width = parseInt(svg.getAttribute('width').toString(), 10)

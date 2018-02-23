@@ -72,7 +72,9 @@ export const generateSummary = (images) => {
   }
 
   for (const { count, url, hex } of images) {
-    const filename = `${uniqueId()}-${hex}-${count}.png`
+    const id = uniqueId()
+    const padddedId = (id < 100 ? '0' : '') + (id < 10 ? '0' : '') + `${id}`
+    const filename = `${padddedId}-${hex}-${count}.png`
     summary.files.push({ count, url, hex, filename })
   }
   return summary

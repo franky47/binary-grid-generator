@@ -3,20 +3,22 @@ import { decodeMatrix, getUserId } from './utility'
 
 const defaultParams = {
   side: 7,
-  size: 20
+  size: 20,
+  mindp: 0.4,
+  maxdp: 0.7
 }
 
 /**
  * Shuffles array in place. ES6 version of the Fisher - Yates shuffle
  * @param {Array} a items - An array containing the items.
  */
-const shuffle = (a) => {
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[a[i], a[j]] = [a[j], a[i]]
-  }
-  return a
-}
+// const shuffle = (a) => {
+//   for (let i = a.length - 1; i > 0; i--) {
+//     const j = Math.floor(Math.random() * (i + 1))
+//     ;[a[i], a[j]] = [a[j], a[i]]
+//   }
+//   return a
+// }
 
 const get = (params = defaultParams) => {
   const url = 'https://wt-92cccbcf027a1b4070443ff04b9033cc-0.run.webtask.io/binary-grid-generator'
@@ -31,13 +33,17 @@ const pushResult = (result) => {
 }
 
 const aggregate = () => {
-  return Promise.all([
-    get({ side: 6, size: 20, mindp: 0, maxdp: 1 }),
-    get({ side: 7, size: 20, mindp: 0, maxdp: 1 }),
-    get({ side: 8, size: 20, mindp: 0, maxdp: 1 })
-  ])
-  .then(([s6, s7, s8]) => [...s6, ...s7, ...s8]) // Combine
-  .then((array) => shuffle(array))
+  return get({ side: 9, size: 80, mindp: 0.4, maxdp: 0.7 })
 }
+
+// const aggregate = () => {
+//   return Promise.all([
+//     get({ side: 6, size: 20, mindp: 0, maxdp: 1 }),
+//     get({ side: 7, size: 20, mindp: 0, maxdp: 1 }),
+//     get({ side: 8, size: 20, mindp: 0, maxdp: 1 })
+//   ])
+//   .then(([s6, s7, s8]) => [...s6, ...s7, ...s8]) // Combine
+//   .then((array) => shuffle(array))
+// }
 
 export default { get, aggregate, pushResult }

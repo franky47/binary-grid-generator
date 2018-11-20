@@ -7,13 +7,13 @@ const matrixSize = 30
 const styles = {
   container: (side) => ({
     display: 'grid',
-    width: `${side * matrixSize + side - 1}px`,
-    height: `${side * matrixSize + side - 1}px`,
+    width: `${side * matrixSize}px`,
+    height: `${side * matrixSize}px`,
     gridTemplateRows: `repeat(${side}, ${matrixSize}px)`,
     gridTemplateColumns: `repeat(${side}, ${matrixSize}px)`,
     border: 'solid 2px black',
     backgroundColor: 'black',
-    gridGap: '1px 1px'
+    gridGap: '0px 0px'
   }),
   cell: {
     fontFamily: 'Arial',

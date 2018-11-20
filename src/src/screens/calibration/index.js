@@ -19,7 +19,8 @@ export default class Calibration extends React.PureComponent {
       matrices: [],
       results: [],
       loading: false,
-      currentMatrix: undefined
+      currentMatrix: undefined,
+      rid: null
     }
 
     this.nextGame = this.nextGame.bind(this)
@@ -34,17 +35,20 @@ export default class Calibration extends React.PureComponent {
       </div>
     )
   }
+
   renderScreen () {
     switch (this.state.stage) {
       case 'intro':
         return <Intro
           next={this.nextGame}
+          updateRunId={this.updateRunId}
           loading={this.state.loading}
         />
       case 'play':
         return <Play
           matrix={this.state.currentMatrix}
           submit={this.submitGuess}
+          rid={this.state.rid}
         />
       case 'result':
         const { guess, count, time } = this.state.results[this.state.results.length - 1]
@@ -58,12 +62,13 @@ export default class Calibration extends React.PureComponent {
         />
       case 'summary':
         const {
-          bestTime, worstTime, averageTime, numCompleted, numTotal, numCorrect
+          bestTime, worstTime, averageTime, totalTime, numCompleted, numTotal, numCorrect
         } = computeStats(this.state.results)
         return <Summary
           bestTime={bestTime}
           worstTime={worstTime}
           averageTime={averageTime}
+          totalTime={totalTime}
           numCompleted={numCompleted}
           numTotal={numTotal}
           numCorrect={numCorrect}
@@ -86,6 +91,10 @@ export default class Calibration extends React.PureComponent {
     })
   }
 
+  updateRunId = (rid) => {
+    this.setState({ rid })
+  }
+
   nextGame () {
     const matrices = [...this.state.matrices] // Make a copy
     const matrix = matrices.splice(0, 1)[0]
@@ -96,13 +105,9 @@ export default class Calibration extends React.PureComponent {
     })
   }
   submitGuess (result) {
-    const correct = result.count === result.guess
     const r = Object.assign({}, result, {
-      correct,
-      completion: {
-        number: this.state.initialNumMatrices - this.state.matrices.length,
-        of: this.state.initialNumMatrices
-      }
+      completionIndex: this.state.initialNumMatrices - this.state.matrices.length,
+      completionTotal: this.state.initialNumMatrices
     })
     api.pushResult(r)
     this.setState({

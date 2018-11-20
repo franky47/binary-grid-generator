@@ -2,7 +2,7 @@ import React from 'react'
 import { getCount } from '../utility'
 import './Matrix.css'
 
-const cellSizePx = 30
+const cellSizePx = 72
 
 // Note: does not handle more than 53 bits (flushes to zero)
 const hexify = (data) => parseInt(data.map((row) => row.join('')).join('').slice(0, 53), 2).toString(16)
@@ -11,7 +11,7 @@ export default class Matrix extends React.PureComponent {
   render () {
     const count = getCount(this.props.data)
     const border = 2
-    const line = 1
+    const line = 0
     const side = this.props.data.length
     const width = side * cellSizePx + 2 * border + (side - 1) * line
     return (
@@ -42,11 +42,12 @@ export default class Matrix extends React.PureComponent {
                   fill='#fff'
                 />
                 <text
+                  alignmentBaseline='central'
                   textAnchor='middle'
                   x={border + (x + 0.5) * (cellSizePx + line)}
-                  y={border + (y + 0.7) * (cellSizePx + line)}
+                  y={border + (y + 0.5) * (cellSizePx + line)}
                   fontFamily='Arial'
-                  fontSize='16'
+                  fontSize='38'
                   fill='#000'
                 >
                   {cell}

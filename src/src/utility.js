@@ -1,17 +1,20 @@
 import JSZip from 'jszip'
 import $ from 'jquery'
 import uniqueId from 'lodash/uniqueId'
-import nanoid from 'nanoid'
+import shortid from 'shortid'
 
 export const setUserId = () => {
-  if (!localStorage.getItem('bgg-uid')) {
-    localStorage.setItem('bgg-uid', nanoid())
+  const uid = getUserId()
+  if (!uid || uid.length >= 15) {
+    window.localStorage.setItem('bgg-uid', shortid.generate())
   }
 }
 
 export const getUserId = () => {
-  return localStorage.getItem('bgg-uid')
+  return window.localStorage.getItem('bgg-uid')
 }
+
+export const generateRunId = () => shortid.generate()
 
 export const stringifyMatrix = (matrix) => {
   return matrix.map((row) => row.join('')).join('|')
@@ -34,7 +37,7 @@ export const getMatrixDensity = (matrix) => {
 
 const renderFromSvg = (svg) => {
   return new Promise((resolve, reject) => {
-    const serializer = new XMLSerializer()
+    const serializer = new window.XMLSerializer()
     const svgstr = serializer.serializeToString(svg)
     const canvas = document.createElement('canvas')
     canvas.width = parseInt(svg.getAttribute('width').toString(), 10)
@@ -69,7 +72,9 @@ export const generateSummary = (images) => {
   }
 
   for (const { count, url, hex } of images) {
-    const filename = `${uniqueId()}-${hex}-${count}.png`
+    const id = uniqueId()
+    const padddedId = (id < 100 ? '0' : '') + (id < 10 ? '0' : '') + `${id}`
+    const filename = `${padddedId}-${hex}-${count}.png`
     summary.files.push({ count, url, hex, filename })
   }
   return summary

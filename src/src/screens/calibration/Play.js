@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Matrix from '../../components/Matrix'
-import { getCount, stringifyMatrix } from '../../utility'
+import { getCount, stringifyMatrix, getMatrixDensity, getUserId } from '../../utility'
 
 import './Play.css'
 
@@ -51,10 +51,15 @@ export default class Play extends React.PureComponent {
     event.preventDefault()
     const { matrix, submit } = this.props
     const stats = {
+      uid: getUserId(),
+      rid: this.props.rid,
       matrix: stringifyMatrix(matrix),
+      density: getMatrixDensity(matrix),
       side: matrix.length,
       count: getCount(matrix),
       guess: this.state.guess,
+      chrono_start: (new Date(this.state.chronoStart)).toISOString(),
+      chrono_stop: (new Date(chronoStop)).toISOString(),
       time: (chronoStop - this.state.chronoStart) * 0.001
     }
     stats.correct = stats.guess === stats.count
@@ -64,5 +69,6 @@ export default class Play extends React.PureComponent {
 
 Play.propTypes = {
   submit: PropTypes.func,
-  matrix: PropTypes.array
+  matrix: PropTypes.array,
+  rid: PropTypes.string
 }

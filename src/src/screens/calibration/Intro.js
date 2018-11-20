@@ -1,4 +1,6 @@
 import React from 'react'
+import { generateRunId } from '../../utility'
+
 import './Intro.css'
 
 export default class Intro extends React.PureComponent {
@@ -6,15 +8,20 @@ export default class Intro extends React.PureComponent {
     const { loading } = this.props
     return (
       <section className='intro'>
-        <h1>Binary Grid <span className='secondary separator'>|</span> Calibration</h1>
-        <p>Count the ones as fast as you can !</p>
+        <h1>Matrices binaires <span className='secondary separator'>|</span> Calibration</h1>
+        <p>Compter le nombre de "1" !</p>
         { loading &&
-          <p>Loading</p>
+          <p>Chargement</p>
         }
         { !loading &&
-          <button onClick={this.props.next}>Start</button>
+          <button onClick={this.start}>Commencer</button>
         }
       </section>
     )
+  }
+
+  start = () => {
+    this.props.updateRunId(generateRunId())
+    this.props.next()
   }
 }
